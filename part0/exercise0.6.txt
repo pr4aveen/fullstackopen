@@ -1,0 +1,18 @@
+note over browser:
+form filled and save button pressed by user
+end note
+
+note over browser:
+form data displayed in browser. 
+JSON object with data and timestamp sent to server
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over server:
+server adds data to local storage
+end note
+
+server-->browser: HTTP Status Code 201 - Created
+
+end note
