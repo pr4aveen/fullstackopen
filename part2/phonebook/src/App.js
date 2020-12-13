@@ -39,7 +39,8 @@ const App = () => {
       .update(personToModify.id, {...personToModify, number:newNumber})
       .then(returnedPerson => setPersons(persons.map(p => p.id === personToModify.id ? returnedPerson : p)))
       .catch(error => {
-        notify(`Information of ${personToModify.name} has already been removed from the server`, false)
+        console.log('err', error)
+        notify(error.response.data.error, false)
         setPersons(persons.filter(p => p.id !== personToModify.id))
       })
     } else {
@@ -48,6 +49,8 @@ const App = () => {
       .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
         notify(`Added ${returnedPerson.name}`, true)
+      }).catch(error => {
+        notify(error.response.data.error, false)
       })
     }
   }

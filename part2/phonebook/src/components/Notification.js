@@ -8,7 +8,7 @@ const Notification = ({notification}) => {
 
     const message = notification[0]
     const success = notification[1]
-    
+
     return (
         <div className={success ? 'success' : 'error'} >
             {message}
